@@ -8,8 +8,8 @@ const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      {/* <HomeScreen /> */}
-      <RideBookingScreen />
+      <HomeScreen />
+      {/* <RideBookingScreen /> */}
     </>
   );
 };

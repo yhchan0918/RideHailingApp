@@ -8,7 +8,7 @@ import styles from './styles';
 
 const HomeSeachSection = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.inputContainer}>
         <Text style={styles.inputTxt}>Where To?</Text>
 
