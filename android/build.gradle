@@ -6,6 +6,8 @@ buildscript {
         minSdkVersion = 16
         compileSdkVersion = 29
         targetSdkVersion = 29
+        playServicesVersion = "17.0.0" // or find latest version
+        androidMapsUtilsVersion = "2.2.0"
     }
     repositories {
         google()
@@ -35,3 +37,4 @@ allprojects {
         maven { url 'https://www.jitpack.io' }
     }
 }
+

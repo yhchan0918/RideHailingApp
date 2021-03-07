@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 import CovidAlert from '../../components/CovidAlert';
-import HomeMap from '../../components/HomeMap';
+import Map from '../../components/Map';
 import HomeSeachSection from '../../components/HomeSearchSection';
 
 const HomeScreen = () => {
   return (
     <View>
-      <HomeMap />
+      <Map />
       <CovidAlert />
       <HomeSeachSection />
     </View>
