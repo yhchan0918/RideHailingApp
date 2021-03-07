@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-import Map from '../../components/Map';
+import RouteMap from '../../components/RouteMap';
 import VehicleOptionsSection from '../../components/VehicleOptionsSection';
 import styles from './styles';
 
@@ -9,7 +9,7 @@ const RideBookingScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.mapContainer}>
-        <Map />
+        <RouteMap />
       </View>
 
       <View style={styles.bottomContainer}>

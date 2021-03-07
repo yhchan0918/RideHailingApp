@@ -13,8 +13,8 @@ const HomeMap = () => {
       initialRegion={{
         latitude: 28.450627,
         longitude: -16.263045,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitudeDelta: 0.0222,
+        longitudeDelta: 0.0121,
       }}>
       {cars.map((car) => (
         <CustomeMarker car={car} />

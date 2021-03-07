@@ -5,13 +5,13 @@ import VehicleOptionRow from '../VehicleOptionRow';
 import types from '../../../assets/data/types';
 import styles from './styles';
 
-const VehicleOptions = () => {
+const VehicleOptionsSection = () => {
   const onPressHandler = () => {};
 
   return (
     <View>
       {types.map((type) => (
-        <VehicleOptionRow type={type} />
+        <VehicleOptionRow type={type} key={type.id} />
       ))}
       <Pressable onPress={onPressHandler} style={styles.button}>
         <Text style={styles.btnTxt}>Confirm Book</Text>
@@ -20,4 +20,4 @@ const VehicleOptions = () => {
   );
 };
 
-export default VehicleOptions;
+export default VehicleOptionsSection;
