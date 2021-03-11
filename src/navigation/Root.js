@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import HomeNavigator from './Home';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import CustomDrawer from '../components/CustomDrawer';
 const Drawer = createDrawerNavigator();
 
 const DummyScreen = (props) => (
@@ -15,7 +16,7 @@ const DummyScreen = (props) => (
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} />}>
         <Drawer.Screen name="Home" component={HomeNavigator} />
         <Drawer.Screen name="Your Trips">
           {() => <DummyScreen name={'Your Trips'} />}
