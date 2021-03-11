@@ -1,10 +1,9 @@
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import {StatusBar, PermissionsAndroid, Platform} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 
-import DestinationSearchScreen from './src/screens/DestinationSearch/index.jsx';
-import HomeScreen from './src/screens/Home/index.jsx';
-import RideBookingScreen from './src/screens/RideBooking/index.jsx';
+import RootNavigator from './src/navigation/Root.js';
 
 navigator.geolocation = require('@react-native-community/geolocation');
 
@@ -46,8 +45,7 @@ const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      {<HomeScreen />}
-      {/* <RideBookingScreen /> */}
+      <RootNavigator />
     </>
   );
 };
