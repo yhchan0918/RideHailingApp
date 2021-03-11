@@ -4,7 +4,7 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import {GP_API_KEY} from '@env';
 
 import styles from './styles';
-import SuggestionRow from '../../components/SuggestionRow';
+import LocationRow from '../../components/LocationRow';
 
 const DestinationSearchScreen = () => {
   const [originPlace, setOriginPlace] = useState(null);
@@ -37,7 +37,10 @@ const DestinationSearchScreen = () => {
             key: GP_API_KEY,
             language: 'en',
           }}
-          renderRow={(data) => <SuggestionRow data={data} />}
+          renderRow={(data) => <LocationRow data={data} />}
+          renderDescription={(data) => data.description || data.vicinity}
+          currentLocation={true}
+          currentLocationLabel="Current location"
         />
 
         <GooglePlacesAutocomplete
@@ -57,7 +60,7 @@ const DestinationSearchScreen = () => {
             key: GP_API_KEY,
             language: 'en',
           }}
-          renderRow={(data) => <SuggestionRow data={data} />}
+          renderRow={(data) => <LocationRow data={data} />}
         />
         {/* Dot near origin input*/}
         <View style={styles.dot}></View>

@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import styles from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const SuggestionRow = (props) => {
+const LocationRow = (props) => {
   const {data} = props;
   console.log(data);
   return (
@@ -11,9 +11,11 @@ const SuggestionRow = (props) => {
       <View style={styles.iconContainer}>
         <Entypo name="location-pin" size={20} color={'#fff'} />
       </View>
-      <Text style={styles.locationTxt}>{data.description}</Text>
+      <Text style={styles.locationTxt}>
+        {data.description || data.vicinity}
+      </Text>
     </View>
   );
 };
 
-export default SuggestionRow;
+export default LocationRow;
