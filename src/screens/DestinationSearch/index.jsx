@@ -4,49 +4,67 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import {GP_API_KEY} from '@env';
 
 import styles from './styles';
+import SuggestionRow from '../../components/SuggestionRow';
 
 const DestinationSearchScreen = () => {
-  const [fromPlace, setFromPlace] = useState(null);
+  const [originPlace, setOriginPlace] = useState(null);
   const [destinationPlace, setDestinationPlace] = useState(null);
 
   useEffect(() => {
-    if (fromPlace && destinationPlace) {
+    if (originPlace && destinationPlace) {
       console.warn('triggered');
     }
-  }, [fromPlace, destinationPlace]);
+  }, [originPlace, destinationPlace]);
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <GooglePlacesAutocomplete
-          placeholder="From"
+          placeholder="Where From?"
           onPress={(data, details = null) => {
-            setFromPlace({data, details});
+            setOriginPlace({data, details});
           }}
+          enablePoweredByContainer={false}
           styles={{
             textInput: styles.input,
+            container: styles.fromContainer,
+            listView: styles.listView,
+            separator: styles.separator,
           }}
+          suppressDefaultStyles
           fetchDetails
           query={{
             key: GP_API_KEY,
             language: 'en',
           }}
+          renderRow={(data) => <SuggestionRow data={data} />}
         />
 
         <GooglePlacesAutocomplete
-          placeholder="Where To"
+          placeholder="Where To?"
+          enablePoweredByContainer={false}
           onPress={(data, details = null) => {
             setDestinationPlace({data, details});
           }}
           styles={{
             textInput: styles.input,
+            container: styles.toContainer,
+            separator: styles.separator,
           }}
+          suppressDefaultStyles
           fetchDetails
           query={{
             key: GP_API_KEY,
             language: 'en',
           }}
+          renderRow={(data) => <SuggestionRow data={data} />}
         />
+        {/* Dot near origin input*/}
+        <View style={styles.dot}></View>
+        {/* Line between dots*/}
+        <View style={styles.line}></View>
+        {/* Square near destination input*/}
+        <View style={styles.square}></View>
       </View>
     </SafeAreaView>
   );
