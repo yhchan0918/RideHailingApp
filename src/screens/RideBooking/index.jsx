@@ -8,12 +8,12 @@ import styles from './styles';
 
 const RideBookingScreen = () => {
   const route = useRoute();
-  console.log(route.params);
+  const {origin, destination} = route.params;
 
   return (
     <View style={styles.container}>
       <View style={styles.mapContainer}>
-        <RouteMap />
+        <RouteMap origin={origin} destination={destination} />
       </View>
 
       <View style={styles.bottomContainer}>

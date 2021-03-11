@@ -5,9 +5,23 @@ import {GP_API_KEY} from '@env';
 
 import styles from './styles';
 
-const RouteMap = () => {
-  const origin = {latitude: 28.450627, longitude: -16.263045};
-  const destination = {latitude: 28.460127, longitude: -16.264045};
+const RouteMap = (props) => {
+  const {origin, destination} = props;
+  console.log(
+    origin.details.geometry.location,
+    destination.details.geometry.location,
+  );
+  const originLoc = {
+    latitude: origin.details.geometry.location.lat,
+    longitude: origin.details.geometry.location.lng,
+  };
+  const destinationLoc = {
+    latitude: destination.details.geometry.location.lat,
+    longitude: destination.details.geometry.location.lng,
+  };
+
+  // const origin = {latitude: 28.450627, longitude: -16.263045};
+  // const destination = {latitude: 28.460127, longitude: -16.264045};
 
   return (
     <MapView
@@ -15,17 +29,17 @@ const RouteMap = () => {
       provider={PROVIDER_GOOGLE}
       showsUserLocation={true}
       initialRegion={{
-        latitude: 28.450627,
-        longitude: -16.263045,
+        latitude: origin.details.geometry.location.lat,
+        longitude: origin.details.geometry.location.lng,
         latitudeDelta: 0.0222,
         longitudeDelta: 0.0121,
       }}>
-      <Marker coordinate={origin} />
+      <Marker coordinate={originLoc} />
 
-      <Marker coordinate={destination} />
+      <Marker coordinate={destinationLoc} />
       <MapViewDirections
-        origin={origin}
-        destination={destination}
+        origin={originLoc}
+        destination={destinationLoc}
         apikey={GP_API_KEY}
         strokeWidth={3}
         strokeColor="black"

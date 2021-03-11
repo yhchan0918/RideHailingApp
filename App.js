@@ -33,7 +33,6 @@ const App: () => React$Node = () => {
   };
 
   useEffect(() => {
-    console.log('mounted');
     if (Platform.OS === 'android') {
       requestLocationAndroidPermission();
     } else {

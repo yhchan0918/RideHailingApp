@@ -8,8 +8,8 @@ import styles from './styles';
 import LocationRow from '../../components/LocationRow';
 
 const DestinationSearchScreen = () => {
-  const [originPlace, setOriginPlace] = useState(null);
-  const [destinationPlace, setDestinationPlace] = useState(null);
+  const [origin, setOrigin] = useState(null);
+  const [destination, setDestination] = useState(null);
   const homePlace = {
     description: 'Home',
     geometry: {location: {lat: 48.8152937, lng: 2.4597668}},
@@ -21,17 +21,17 @@ const DestinationSearchScreen = () => {
 
   const navigation = useNavigation();
   const goToRideBookingScreen = () => {
-    if (originPlace && destinationPlace) {
+    if (origin && destination) {
       navigation.navigate('RideBooking', {
-        originPlace,
-        destinationPlace,
+        origin,
+        destination,
       });
     }
   };
 
   useEffect(() => {
     goToRideBookingScreen();
-  }, [originPlace, destinationPlace]);
+  }, [origin, destination]);
 
   return (
     <SafeAreaView>
@@ -39,7 +39,7 @@ const DestinationSearchScreen = () => {
         <GooglePlacesAutocomplete
           placeholder="Where From?"
           onPress={(data, details = null) => {
-            setOriginPlace({data, details});
+            setOrigin({data, details});
           }}
           styles={{
             textInput: styles.input,
@@ -66,7 +66,7 @@ const DestinationSearchScreen = () => {
           placeholder="Where To?"
           enablePoweredByContainer={false}
           onPress={(data, details = null) => {
-            setDestinationPlace({data, details});
+            setDestination({data, details});
           }}
           styles={{
             textInput: styles.input,
