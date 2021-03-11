@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginRight: 15,
   },
+
   locationTxt: {
     fontSize: 15,
   },

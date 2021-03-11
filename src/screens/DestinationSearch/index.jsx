@@ -9,7 +9,14 @@ import LocationRow from '../../components/LocationRow';
 const DestinationSearchScreen = () => {
   const [originPlace, setOriginPlace] = useState(null);
   const [destinationPlace, setDestinationPlace] = useState(null);
-
+  const homePlace = {
+    description: 'Home',
+    geometry: {location: {lat: 48.8152937, lng: 2.4597668}},
+  };
+  const workPlace = {
+    description: 'Work',
+    geometry: {location: {lat: 48.8496818, lng: 2.2940881}},
+  };
   useEffect(() => {
     if (originPlace && destinationPlace) {
       console.warn('triggered');
@@ -24,23 +31,25 @@ const DestinationSearchScreen = () => {
           onPress={(data, details = null) => {
             setOriginPlace({data, details});
           }}
-          enablePoweredByContainer={false}
           styles={{
             textInput: styles.input,
             container: styles.fromContainer,
             listView: styles.listView,
             separator: styles.separator,
           }}
-          suppressDefaultStyles
-          fetchDetails
           query={{
             key: GP_API_KEY,
             language: 'en',
           }}
-          renderRow={(data) => <LocationRow data={data} />}
-          renderDescription={(data) => data.description || data.vicinity}
+          enablePoweredByContainer={false}
+          suppressDefaultStyles
+          fetchDetails
+          predefinedPlaces={[homePlace, workPlace]}
+          enableHighAccuracyLocation={true}
           currentLocation={true}
           currentLocationLabel="Current location"
+          renderRow={(data) => <LocationRow data={data} />}
+          renderDescription={(data) => data.description || data.vicinity}
         />
 
         <GooglePlacesAutocomplete
@@ -54,12 +63,14 @@ const DestinationSearchScreen = () => {
             container: styles.toContainer,
             separator: styles.separator,
           }}
-          suppressDefaultStyles
-          fetchDetails
           query={{
             key: GP_API_KEY,
             language: 'en',
           }}
+          enableHighAccuracyLocation={true}
+          suppressDefaultStyles
+          fetchDetails
+          predefinedPlaces={[homePlace, workPlace]}
           renderRow={(data) => <LocationRow data={data} />}
         />
         {/* Dot near origin input*/}
