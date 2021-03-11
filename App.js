@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
-import {StatusBar, PermissionsAndroid, Platform} from 'react-native';
+import {PermissionsAndroid, Platform} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 
 import RootNavigator from './src/navigation/Root.js';
@@ -33,18 +33,17 @@ const App: () => React$Node = () => {
   };
 
   useEffect(() => {
+    console.log('mounted');
     if (Platform.OS === 'android') {
       requestLocationAndroidPermission();
     } else {
       //IOS
       Geolocation.requestAuthorization();
     }
-    // Geolocation.getCurrentPosition((info) => console.log(info));
   }, []);
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
       <RootNavigator />
     </>
   );

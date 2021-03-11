@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const LocationRow = (props) => {
   const {data} = props;
-  console.log(data);
+
   return (
     <View style={styles.row}>
       {data.description === 'Home' ? (

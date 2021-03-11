@@ -18,7 +18,7 @@ const HomeMap = () => {
         longitudeDelta: 0.0121,
       }}>
       {cars.map((car) => (
-        <CustomeMarker car={car} />
+        <CustomeMarker car={car} key={car.id} />
       ))}
     </MapView>
   );

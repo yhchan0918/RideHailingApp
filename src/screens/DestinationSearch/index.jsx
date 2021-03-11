@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, SafeAreaView} from 'react-native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {GP_API_KEY} from '@env';
+import {useNavigation} from '@react-navigation/native';
 
 import styles from './styles';
 import LocationRow from '../../components/LocationRow';
@@ -17,10 +18,19 @@ const DestinationSearchScreen = () => {
     description: 'Work',
     geometry: {location: {lat: 48.8496818, lng: 2.2940881}},
   };
-  useEffect(() => {
+
+  const navigation = useNavigation();
+  const goToRideBookingScreen = () => {
     if (originPlace && destinationPlace) {
-      console.warn('triggered');
+      navigation.navigate('RideBooking', {
+        originPlace,
+        destinationPlace,
+      });
     }
+  };
+
+  useEffect(() => {
+    goToRideBookingScreen();
   }, [originPlace, destinationPlace]);
 
   return (
