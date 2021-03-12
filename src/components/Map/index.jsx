@@ -1,11 +1,25 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
-import CustomeMarker from '../CustomMarker';
+import {API, graphqlOperation} from 'aws-amplify';
+import {listCars} from '../../graphql/queries';
 
+import CustomeMarker from '../CustomMarker';
 import styles from './styles';
-import cars from '../../../assets/data/cars';
 
 const HomeMap = () => {
+  const [cars, setCars] = useState([]);
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const allCars = await API.graphql(graphqlOperation(listCars));
+        setCars(allCars.data.listCars.items);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCars();
+  }, []);
+
   return (
     <MapView
       style={styles.map}

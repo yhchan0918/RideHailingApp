@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Pressable} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 
 const VehicleOptionRow = (props) => {
-  const {type} = props;
+  const {type, onPressHandler, isSelected} = props;
   const getImage = () => {
     if (type.type === 'UberX') {
       return require('../../../assets/images/UberX.jpeg');
@@ -16,7 +16,12 @@ const VehicleOptionRow = (props) => {
     return require('../../../assets/images/UberXL.jpeg');
   };
   return (
-    <View style={styles.container}>
+    <Pressable
+      style={[
+        styles.container,
+        {backgroundColor: isSelected ? '#efefef' : '#fff'},
+      ]}
+      onPress={onPressHandler}>
       <Image style={styles.image} source={getImage()} />
       <View style={styles.middleContainer}>
         <Text style={styles.vehicleType}>
@@ -29,7 +34,7 @@ const VehicleOptionRow = (props) => {
         <Ionicons name="pricetag" size={18} color="#47d742" />
         <Text style={styles.price}>est. ${type.price}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

@@ -7,10 +7,7 @@ import styles from './styles';
 
 const RouteMap = (props) => {
   const {origin, destination} = props;
-  console.log(
-    origin.details.geometry.location,
-    destination.details.geometry.location,
-  );
+
   const originLoc = {
     latitude: origin.details.geometry.location.lat,
     longitude: origin.details.geometry.location.lng,
