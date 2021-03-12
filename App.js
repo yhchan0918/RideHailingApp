@@ -2,10 +2,10 @@ import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import {PermissionsAndroid, Platform} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
+import {withAuthenticator} from 'aws-amplify-react-native';
+navigator.geolocation = require('@react-native-community/geolocation');
 
 import RootNavigator from './src/navigation/Root.js';
-
-navigator.geolocation = require('@react-native-community/geolocation');
 
 const App: () => React$Node = () => {
   const requestLocationAndroidPermission = async () => {
@@ -48,4 +48,4 @@ const App: () => React$Node = () => {
   );
 };
 
-export default App;
+export default withAuthenticator(App);
