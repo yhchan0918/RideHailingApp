@@ -5,7 +5,7 @@ import HomeScreen from './src/screens/Home';
 const App: () => React$Node = () => {
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={{flex: 1}}>
         <HomeScreen />
       </SafeAreaView>
     </>

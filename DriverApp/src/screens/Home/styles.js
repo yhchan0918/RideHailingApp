@@ -61,6 +61,19 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#fff',
   },
+  pickUpContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  userBg: {
+    backgroundColor: '#1e9203',
+    width: 30,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 202,
+    marginHorizontal: 10,
+  },
 });
 
 export default styles;
