@@ -44,6 +44,20 @@ const styles = StyleSheet.create({
     color: '#fff',
     paddingVertical: 5,
   },
+  logoutBtn: {
+    bottom: 50,
+    backgroundColor: '#f21616',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 50,
+    marginHorizontal: 15,
+    borderRadius: 10,
+  },
+  logoutTxt: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;
